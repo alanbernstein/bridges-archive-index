@@ -1,0 +1,39 @@
+<html>
+
+    <head>
+        <title>Bridges archive index</title>
+        <style type="text/css">
+            body {
+            color: #ccc;
+            background-color: #222;
+            font-family: arial, sans-serif;
+            max-width: 50rem;
+            padding: 2rem;
+            margin: auto;
+            }
+            a {
+            color: #55c;
+            }
+
+            a:visited {
+            color: #c5c;
+            }
+        </style>
+
+    </head>
+    <body>
+
+        Slightly easier-to-navigate/search list of links to papers from the <a href="http://www.bridgesmathart.org/">Bridges</a> <a href="http://archive.bridgesmathart.org/">archive</a> of math/art papers.<br>
+
+        Scraped/generated with something like <a href="htpps://github.com/alanbernstein/bridges-archive-index">this</a>.<br>
+
+        {%- for year, yeardata in data.items() |reverse %}
+            <h3> <a href="http://archive.bridgesmathart.org/{{year}}/index.html">{{ year }}</a> </h3>
+            {%- for paper in yeardata %}
+                <a href="{{paper.pdf_link}}">{{ paper.title }}</a> - {{ paper.authors }} - <a href="{{paper.html_link}}">html</a><br>
+
+            {%- endfor %}
+        {%- endfor %}
+
+    </body>
+</html>
